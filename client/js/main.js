@@ -1,5 +1,8 @@
-// add scripts
-
-$(document).on('ready', function() {
-  console.log('sanity check!');
-});
+angular.module('imageApp', ['ngRoute', 'homeDirective'])
+  .config(function($routeProvider){
+    $routeProvider
+      .when('/', {
+        templateUrl: 'home/home.html',
+        controller: 'HomeController'
+      });
+  });
