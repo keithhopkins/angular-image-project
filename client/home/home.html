@@ -2,8 +2,8 @@
   <h2>Image Analysis API</h2>
   <form>
     <label for='image-url'>Enter Image URL: </label>
-    <input id='image-url' type='text' ng-model='imageURL' placeholder="Enter image URL"></input>
-    <button class='btn btn-primary'>Submit</button>
+    <input id='image-url' type='text' ng-model='imgUrl' placeholder="Enter image URL"></input>
+    <button ng-click='getKeywords()' class='btn btn-primary'>Submit</button>
   </form>
 
   <results></results>
