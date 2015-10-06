@@ -1,3 +1,6 @@
 <div>
-  {{test}}
+  <img src='{{imgUrl}}'>
+  <div ng-repeat='picture as picture.images.low_resolution.url for picture in pictures'>
+    <img src='{{picture}}'>
+  </div>
 </div>

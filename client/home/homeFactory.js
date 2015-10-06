@@ -10,7 +10,7 @@ angular.module('imageApp')
         imgUrl: imgUrl
       }
     });
-  }
+  };
 
   factory.getInstagram = function(keyword){
     return $http({
@@ -20,6 +20,6 @@ angular.module('imageApp')
         keyword: keyword
       }
     });
-  }
+  };
   return factory;
 }]);
