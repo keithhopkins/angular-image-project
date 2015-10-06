@@ -44,7 +44,7 @@ router.post('/api/instagram', function(req, res) {
   var keyword = req.body.keyword;
   request({
     method: 'GET',
-    url: "https://api.instagram.com/v1/tags/" + keyword + "/media/recent"
+    url: "https://api.instagram.com/v1/tags/" + keyword + "/media/recent?client_id="+key.instagramKey
   }, function(err, response){
     if(err){
       console.log('err', err);

@@ -1,14 +1,14 @@
 angular.module('imageApp')
   .controller('HomeController', function($scope, homeFactory){
-    
+
     $scope.getKeywords = function(){
       homeFactory.getKeywords($scope.imgUrl)
         .then(function(response){
           // get keywords out of response
-          var keyword = JSON.parse(response.data.body).imageKeywords[0];
+          var keyword = JSON.parse(response.data.body).imageKeywords[0].text;
+          console.log(keyword);
           // call factory for request to instagram
           getInstagram(keyword);
-          $scope.test = JSON.parse(response.data.body).imageKeywords;
         }, function(response){
           console.log('FAIL', response);
         });
@@ -16,7 +16,9 @@ angular.module('imageApp')
     function getInstagram(keyword){
       homeFactory.getInstagram(keyword)
         .then(function(response){
-          $scope.pictures = response.data;
+          console.log(response);
+          $scope.pictures = JSON.parse(response.data.body).data;
+          console.log($scope.pictures);
         }, function(response){
           console.log('FAIL', response);
         })
