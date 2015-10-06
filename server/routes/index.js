@@ -28,7 +28,7 @@ router.post('/api/vision', function(req, res){
   request({
     method: 'GET',
     url: 'http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageKeywords?url='
-          +imgUrl+'&apikey='+key.apikey+'&outputMode=json'
+          +imgUrl+'&apikey='+key.alchemyKey+'&outputMode=json'
   }, function(err, response){
     if(err){
       console.log('err', err);
@@ -37,7 +37,23 @@ router.post('/api/vision', function(req, res){
       res.json(response);
     }
   });
-})
+});
+
+router.post('/api/instagram', function(req, res) {
+  console.log('made it to the GET');
+  var keyword = req.body.keyword;
+  request({
+    method: 'GET',
+    url: "https://api.instagram.com/v1/tags/" + keyword + "/media/recent"
+  }, function(err, response){
+    if(err){
+      console.log('err', err);
+      res.json(err);
+    } else {
+      res.json(response);
+    }
+  });
+});
 
 // http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageKeywords?url=http://www.online-image-editor.com//styles/2014/images/example_image.png&apikey=dfc8ffa9897e45e8753a1e3c63b1ef1791208403
 
