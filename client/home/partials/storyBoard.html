@@ -1,5 +1,5 @@
 <div>
-  <h2 ng-click='showStory=!showStory'>Story Board</h2>
+  <button class='btn btn-success' ng-click='showStory=!showStory'>Story Board</button>
   <div ng-show='showStory'>
     <img ng-repeat='picture in storyBoard' src='{{picture}}'>
   </div>

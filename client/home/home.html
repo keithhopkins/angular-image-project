@@ -1,11 +1,13 @@
 <div>
-  <h2>Image Analysis API</h2>
+  <h2>Create your own story board adventure</h2>
+  <h3>Start your adventure</h3>
   <form>
-    <label for='image-url'>Enter Image URL: </label>
-    <input id='image-url' type='text' ng-model='imgUrl' placeholder="Enter image URL"></input>
-    <button ng-click='getKeywordsAndInstagram()' class='btn btn-primary'>Submit</button>
-    <!-- <button ng-click='getFaces()' class='btn btn-danger'>Get Faces</button> -->
-    <!-- <button ng-click='getEntities()' class='btn btn-secondary'>Get Entities</button> -->
+    <label for='image-url'>Start by entering Image URL: </label>
+    <input class='form-control' id='image-url' type='text' ng-model='imgUrl' placeholder="Enter an   image URL"></input>
+    <br>
+    <button ng-click='getKeywordsAndInstagram()' class='btn btn-primary'>Get Similar Photos</button>
+    <button ng-click='addStoryBoard(imgUrl)' class='btn btn-danger'>Add to Story Board</button>
+
   </form>
   <p>{{errorMessage}}</p>
   <div>
