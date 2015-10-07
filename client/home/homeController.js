@@ -1,14 +1,29 @@
 angular.module('imageApp')
   .controller('HomeController', function($scope, homeFactory){
-
-    $scope.getKeywords = function(){
+    $scope.storyBoard = [];
+    $scope.getKeywordsAndInstagram = function(){
+      $scope.storyBoard.push($scope.imgUrl);
       homeFactory.getKeywords($scope.imgUrl)
         .then(function(response){
-          // get keywords out of response
-          var keyword = JSON.parse(response.data.body).imageKeywords[0].text;
-          console.log(keyword);
-          // call factory for request to instagram
-          getInstagram(keyword);
+          $scope.errorMessage = '';
+          var keyword;
+          var keywords = JSON.parse(response.data.body).imageKeywords;
+          console.log('keywords', keywords);
+          if(keywords.length===0){
+            $scope.errorMessage = 'Cannot analyze image. Try another image.';
+          } else if (keywords[0].text==='person'){
+            if(keywords[1]){
+              keyword = keywords[1].text;
+            }
+          } else {
+            keyword = keywords[0].text;
+          }
+          console.log('keyword', keyword);
+          $scope.hashTag = keyword;
+          if(keyword!==undefined){
+            $scope.showTitle=true;
+            getInstagram(keyword);
+          }
         }, function(response){
           console.log('FAIL', response);
         });
@@ -33,6 +48,7 @@ angular.module('imageApp')
     };
 
     function getInstagram(keyword){
+      console.log('get instagram', keyword);
       homeFactory.getInstagram(keyword)
         .then(function(response){
           console.log(response);
@@ -43,5 +59,3 @@ angular.module('imageApp')
         });
     }
   });
-
-

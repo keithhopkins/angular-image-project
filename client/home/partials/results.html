@@ -1,5 +1,5 @@
 <div>
-  <img src='{{imgUrl}}'>
+  <h2 ng-show='showTitle'>#{{hashTag}} Instagram Photos</h2>
   <div>
     <img ng-repeat='picture in pictures' src='{{picture.images.low_resolution.url}}'>
   </div>

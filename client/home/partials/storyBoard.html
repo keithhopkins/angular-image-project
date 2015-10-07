@@ -1,0 +1,6 @@
+<div>
+  <h2 ng-click='showStory=!showStory'>Story Board</h2>
+  <div ng-show='showStory'>
+    <img ng-repeat='picture in storyBoard' src='{{picture}}'>
+  </div>
+</div>
