@@ -12,7 +12,26 @@ angular.module('imageApp')
         }, function(response){
           console.log('FAIL', response);
         });
-    }
+    };
+
+    $scope.getFaces = function() {
+      homeFactory.getFaces($scope.imgUrl)
+      .then(function(response){
+        console.log(response);
+      }, function(response) {
+        console.log('Fail', response);
+      });
+    };
+
+    $scope.getEntities = function() {
+      homeFactory.getEntities($scope.imgUrl)
+      .then(function(response){
+        console.log(response);
+      }, function(response){
+        console.log("FAIL", response);
+      });
+    };
+
     function getInstagram(keyword){
       homeFactory.getInstagram(keyword)
         .then(function(response){
@@ -21,6 +40,8 @@ angular.module('imageApp')
           console.log($scope.pictures);
         }, function(response){
           console.log('FAIL', response);
-        })
+        });
     }
   });
+
+
