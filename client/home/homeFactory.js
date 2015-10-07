@@ -12,25 +12,6 @@ angular.module('imageApp')
     });
   };
 
-  factory.getFaces = function(imgUrl){
-    return $http({
-      method: 'POST',
-      url: '/api/facetags',
-      data: {
-        imgUrl: imgUrl
-      }
-    });
-  };
-
-  factory.getEntities = function(imgUrl){
-    return $http({
-      method: 'POST',
-      url: '/api/entities',
-      data: {
-        imgUrl: imgUrl
-      }
-    });
-  };
 
   factory.getInstagram = function(keyword){
     return $http({
@@ -41,5 +22,16 @@ angular.module('imageApp')
       }
     });
   };
+
+  factory.addStoryBoard = function(imgUrl) {
+    return $http({
+      method: 'POST',
+      url: '/api/storyboard',
+      data: {
+        imgUrl: imgUrl
+      }
+    });
+  };
+
   return factory;
 }]);

@@ -35,14 +35,11 @@ router.post('/api/instagram', function(req, res) {
   });
 });
 
-router.post('/api/facetags', function(req, res){
-  console.log('made it to the GET');
+router.post('/api/storyboard', function(req, res){
   var imgUrl = req.body.imgUrl;
-  // var imgUrl = 'http://www.online-image-editor.com//styles/2014/images/example_image.png';
   request({
     method: 'GET',
-    url: 'http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageFaceTags?url='
-          +imgUrl+'&apikey='+key.alchemyKey+'&outputMode=json'
+    url: imgUrl
   }, function(err, response){
     if(err){
       console.log('err', err);
@@ -51,23 +48,11 @@ router.post('/api/facetags', function(req, res){
       res.json(response);
     }
   });
+
+
 });
 
-router.post('/api/entities', function(req, res){
-  var imgUrl = req.body.imgUrl;
-  request({
-    method: 'GET',
-    url: 'http://gateway-a.watsonplatform.net/calls/url/URLGetRankedNamedEntities?url='
-          +imgUrl+'&apikey='+key.alchemyKey+'&outputMode=json'
-  }, function(err, response){
-    if(err){
-      console.log('err', err);
-      res.json(err);
-    } else {
-      res.json(response);
-    }
-  });
-});
+
 
 // http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageKeywords?url=http://www.online-image-editor.com//styles/2014/images/example_image.png&apikey=dfc8ffa9897e45e8753a1e3c63b1ef1791208403
 

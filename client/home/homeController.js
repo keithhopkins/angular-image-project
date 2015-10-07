@@ -1,6 +1,7 @@
 angular.module('imageApp')
   .controller('HomeController', function($scope, homeFactory){
     $scope.storyBoard = [];
+
     $scope.getKeywordsAndInstagram = function(){
       $scope.storyBoard.push($scope.imgUrl);
       homeFactory.getKeywords($scope.imgUrl)
@@ -29,21 +30,13 @@ angular.module('imageApp')
         });
     };
 
-    $scope.getFaces = function() {
-      homeFactory.getFaces($scope.imgUrl)
-      .then(function(response){
+    $scope.addStoryBoard = function() {
+      $scope.storyBoard.push($scope.imgUrl);
+      homeFactory.addStoryBoard($scope.imgUrl)
+      .then(function(response) {
         console.log(response);
       }, function(response) {
-        console.log('Fail', response);
-      });
-    };
-
-    $scope.getEntities = function() {
-      homeFactory.getEntities($scope.imgUrl)
-      .then(function(response){
-        console.log(response);
-      }, function(response){
-        console.log("FAIL", response);
+        console.log('FAIL', response);
       });
     };
 
@@ -58,4 +51,7 @@ angular.module('imageApp')
           console.log('FAIL', response);
         });
     }
-  });
+
+
+
+  }); //end
