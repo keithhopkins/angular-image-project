@@ -20,7 +20,3 @@ mongoose.model('users', userSchema);
 mongoose.model('stories', storyBoardSchema);
 
 mongoose.connect('mongodb://localhost/storyBoardApp');
-// module.exports = {
-//   userSchema: userSchema,
-//   storyBoardSchema: storyBoardSchema
-// };
