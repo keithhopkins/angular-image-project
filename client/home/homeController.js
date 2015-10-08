@@ -1,6 +1,6 @@
 angular.module('imageApp')
   .controller('HomeController', function($scope, homeFactory, $timeout){
-    $scope.storyBoard = [];
+    $scope.storyBoard = {panels:[]};
     $scope.errorMessage = '';
 
     function messageTimeout() {
@@ -9,8 +9,8 @@ angular.module('imageApp')
 
     homeFactory.getStoryBoards()
     .then(function(response){
-      console.log('all storyboards', response.data);
       $scope.storyBoards = response.data;
+      console.log($scope.storyBoards);
     }, function(response){
       console.log('failed to get all storyboards');
     });
@@ -49,11 +49,11 @@ angular.module('imageApp')
       var obj = {imgUrl: $scope.imgUrl,
                  caption:'test'};
       console.log(obj);
-      $scope.storyBoard.push(obj);
+      $scope.storyBoard.panels.push(obj);
     };
 
     $scope.saveStory = function(){
-      homeFactory.saveStoryBoard($scope.title,$scope.storyBoard)
+      homeFactory.saveStoryBoard($scope.storyBoard)
       .then(function(response) {
         console.log('success save', response);
       }, function(response) {
@@ -77,6 +77,10 @@ angular.module('imageApp')
       console.log('It is working', url);
       $scope.imgUrl = url;
     };
+
+    $scope.showValues = function() {
+      console.log($scope.storyBoard);
+    }
 
 
 

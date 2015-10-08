@@ -1,6 +1,6 @@
 <div>
   <h2 ng-show='showTitle'>#{{hashTag}} Instagram Photos</h2>
   <div>
-    <img hover ng-click='urlFinder(picture.images.low_resolution.url)' ng-repeat='picture in pictures' src='{{picture.images.low_resolution.url}}'>
+    <img hover ng-click='urlFinder(picture.images.low_resolution.url)' ng-repeat='picture in pictures' ng-src='{{picture.images.low_resolution.url}}'>
   </div>
 </div>
