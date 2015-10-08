@@ -9,8 +9,8 @@ angular.module('imageApp')
 
     homeFactory.getStoryBoards()
     .then(function(response){
-      console.log('all storyboards', response);
-      $scope.storyBoards = response;
+      console.log('all storyboards', response.data);
+      $scope.storyBoards = response.data;
     }, function(response){
       console.log('failed to get all storyboards');
     });
@@ -18,7 +18,7 @@ angular.module('imageApp')
     // delete story
 
     $scope.getKeywordsAndInstagram = function(){
-      $scope.storyBoard.push($scope.imgUrl);
+      // $scope.storyBoard.push($scope.imgUrl);
       homeFactory.getKeywords($scope.imgUrl)
         .then(function(response){
           var keyword;
@@ -46,11 +46,14 @@ angular.module('imageApp')
     };
 
     $scope.addStoryBoard = function() {
-      $scope.storyBoard.push($scope.imgUrl);
+      var obj = {imgUrl: $scope.imgUrl,
+                 caption:'test'};
+      console.log(obj);
+      $scope.storyBoard.push(obj);
     };
 
     $scope.saveStory = function(){
-      homeFactory.saveStoryBoard($scope.title, $scope.storyBoard)
+      homeFactory.saveStoryBoard($scope.title,$scope.storyBoard)
       .then(function(response) {
         console.log('success save', response);
       }, function(response) {

@@ -28,6 +28,7 @@ angular.module('imageApp')
       method: 'POST',
       url: '/api/storyboard',
       data: {
+        user: 'test',
         title: title,
         storyBoard: storyBoard
       }

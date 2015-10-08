@@ -1,4 +1,4 @@
-var mongoose = require('mongoose-q')(require('mongoose',{spread:true}));
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -20,3 +20,5 @@ mongoose.model('users', userSchema);
 mongoose.model('stories', storyBoardSchema);
 
 mongoose.connect('mongodb://localhost/storyBoardApp');
+
+// module.exports = mongoose.model('stories', storyBoardSchema)

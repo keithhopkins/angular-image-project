@@ -2,7 +2,8 @@
   <h2>Create your own story board adventure</h2>
   <h3>Start your adventure</h3>
   <form>
-    <select ng-options='story as story.title for story in storyBoards'>
+    <!-- story as story.title for  -->
+    <select ng-options='story in storyBoards'>
       <pre>{{ story }}</pre>
     </select>
     <br>

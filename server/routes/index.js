@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var key = require('../../_config.js');
 var request = require('request');
+var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
 var StoryBoard = mongoose.model('stories');
 
 router.post('/api/vision', function(req, res){
@@ -48,8 +49,10 @@ router.get('/api/storyboard', function(req, res){
 
 // needs title and storyboard
 router.post('/api/storyboard', function(req, res){
+  console.log(req.body);
+  console.log(req.body.title);
   var query = {title: req.body.title};
-  var update = {storyBoard: req.body.storyBoard};
+  var update = req.body;
   var options = {upsert: true, new: true};
   StoryBoard.findOneAndUpdateQ(query, update, options)
   .then(function(data) {
@@ -57,6 +60,7 @@ router.post('/api/storyboard', function(req, res){
     res.json(data);
   }).catch(function(err) {
     console.log('story update failed');
+    console.log(err);
     res.json({'message': err});
   });
 });
