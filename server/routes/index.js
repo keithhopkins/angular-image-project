@@ -47,7 +47,7 @@ router.get('/api/storyboard', function(req, res){
   });
 });
 
-// needs title and storyboard
+// needs title and panels
 router.post('/api/storyboard', function(req, res){
   console.log(req.body);
   console.log(req.body.title);
