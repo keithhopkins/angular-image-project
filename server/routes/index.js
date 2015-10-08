@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var key = require('../../_config.js');
 var request = require('request');
-var StoryBoard = require('../models/database');
+var StoryBoard = mongoose.model('stories');
 
 router.post('/api/vision', function(req, res){
   var imgUrl = req.body.imgUrl;
@@ -43,8 +43,8 @@ router.get('/api/storyboard', function(req, res){
     res.json(data);
   }).catch(function(err){
     res.json({'message': err});
-  })
-})
+  });
+});
 
 // needs title and storyboard
 router.post('/api/storyboard', function(req, res){
