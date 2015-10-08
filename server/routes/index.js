@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var key = require('../../_config.js');
 var request = require('request');
+var StoryBoard = require('../models/database');
 
 router.post('/api/vision', function(req, res){
   var imgUrl = req.body.imgUrl;
@@ -35,23 +36,30 @@ router.post('/api/instagram', function(req, res) {
   });
 });
 
+// get all storyboards
+router.get('/api/storyboard', function(req, res){
+  StoryBoard.findQ()
+  .then(function(data){
+    res.json(data);
+  }).catch(function(err){
+    res.json({'message': err});
+  })
+})
+
+// needs title and storyboard
 router.post('/api/storyboard', function(req, res){
-  var imgUrl = req.body.imgUrl;
-  request({
-    method: 'GET',
-    url: imgUrl
-  }, function(err, response){
-    if(err){
-      console.log('err', err);
-      res.json(err);
-    } else {
-      res.json(response);
-    }
+  var query = {title: req.body.title};
+  var update = {storyBoard: req.body.storyBoard};
+  var options = {upsert: true, new: true};
+  StoryBoard.findOneAndUpdateQ(query, update, options)
+  .then(function(data) {
+    console.log('story successfully made/updated');
+    res.json(data);
+  }).catch(function(err) {
+    console.log('story update failed');
+    res.json({'message': err});
   });
-
-
 });
-
 
 
 // http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageKeywords?url=http://www.online-image-editor.com//styles/2014/images/example_image.png&apikey=dfc8ffa9897e45e8753a1e3c63b1ef1791208403

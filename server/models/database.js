@@ -8,8 +8,11 @@ var userSchema = new Schema(){
 }
 
 var storyBoardSchema = new Schema(){
+  user: String,
+  title: String,
   storyBoard: [{
-    imgUrl: String
+    imgUrl: String,
+    caption: String
   }]
 };
 
