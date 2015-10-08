@@ -23,13 +23,21 @@ angular.module('imageApp')
     });
   };
 
-  factory.addStoryBoard = function(imgUrl) {
+  factory.saveStoryBoard = function(title, storyBoard) {
     return $http({
       method: 'POST',
       url: '/api/storyboard',
       data: {
-        imgUrl: imgUrl
+        title: title,
+        storyBoard: storyBoard
       }
+    });
+  };
+
+  factory.getStoryBoards = function(){
+    return $http({
+      method: 'GET',
+      url: '/api/storyboard'
     });
   };
 

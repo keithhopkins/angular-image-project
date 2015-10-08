@@ -2,8 +2,14 @@
   <h2>Create your own story board adventure</h2>
   <h3>Start your adventure</h3>
   <form>
+    <select ng-options='story as story.title for story in storyBoards'>
+      <pre>{{ story }}</pre>
+    </select>
+    <br>
+    <label for='title'>Name your storyboard:</label>
+    <input class='form-control' id='title' type='text' ng-model='title' placeholder="Name your story"></input>
     <label for='image-url'>Start by entering Image URL: </label>
-    <input class='form-control' id='image-url' type='text' ng-model='imgUrl' placeholder="Enter an   image URL"></input>
+    <input class='form-control' id='image-url' type='text' ng-model='imgUrl' placeholder="Enter image URL"></input>
     <br>
     <button ng-click='getKeywordsAndInstagram()' class='btn btn-primary'>Get Similar Photos</button>
     <button ng-click='addStoryBoard(imgUrl)' class='btn btn-danger'>Add to Story Board</button>
