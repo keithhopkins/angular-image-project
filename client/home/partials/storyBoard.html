@@ -1,6 +1,9 @@
 <div>
   <button class='btn btn-success' ng-click='showStory=!showStory'>Story Board</button>
   <div ng-show='showStory'>
+  <h3>{{ title }}</h3>
     <img ng-repeat='picture in storyBoard' src='{{picture}}'>
+    <br>
+    <button class='btn btn-info' ng-click='saveStory()'>Save Story</button>
   </div>
 </div>

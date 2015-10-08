@@ -12,5 +12,29 @@ angular.module('homeDirective')
   return {
     restrict: 'E',
     templateUrl: 'home/partials/storyBoard.html'
-  }
-})
+  };
+});
+
+angular.module('homeDirective')
+.directive('hover', function() {
+  return {
+    restrict: 'A',
+    link:function($scope, element, attribute) {
+     element.on('click', function() {
+      console.log('work!!');
+      element.addClass('border');
+      $scope.imgUrl = 'banana';
+     });
+    }
+  };
+});
+
+
+
+
+
+
+
+
+
+
