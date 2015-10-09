@@ -53,13 +53,14 @@ angular.module('imageApp')
     };
 
     $scope.saveStory = function(){
+      $scope.storyBoards.push($scope.storyBoard);
       homeFactory.saveStoryBoard($scope.storyBoard)
       .then(function(response) {
         console.log('success save', response);
       }, function(response) {
         console.log('FAIL', response);
       });
-    }
+    };
 
     function getInstagram(keyword){
       console.log('get instagram', keyword);
