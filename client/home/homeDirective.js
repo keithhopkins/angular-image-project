@@ -19,22 +19,38 @@ angular.module('homeDirective')
 .directive('hover', function() {
   return {
     restrict: 'A',
-    link:function($scope, element, attribute) {
-     element.on('click', function() {
+    link:function(scope, elem, attrs) {
+     elem.on('click', function() {
+      // needs to get fixed
       console.log('work!!');
-      element.addClass('border');
-      $scope.imgUrl = 'banana';
+      elem.addClass('border');
      });
     }
   };
 });
 
-
-
-
-
-
-
-
-
-
+angular.module('homeDirective')
+.directive('panel', function(){
+  return {
+    restrict: 'E',
+    scope:{
+      img: '@'
+    },
+    transclude: true,
+    link: function(scope, elem, attrs){
+      elem.css('display', 'inline');
+      elem.css('max-width', '250px');
+      elem.css('max-height', '350px');
+      elem.css('margin', '10px');
+      console.log('should be img', elem.children()[0]);
+      elem.children()[1].css('max-width', '250px');
+      elem.children()[1].css('max-height', '250px');
+    },
+    templateUrl: 'home/partials/panel.html'
+  }
+})
+// img {
+//   max-height: 250px;
+//   max-width: 250px;
+//   margin: 10px;
+// }

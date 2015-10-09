@@ -2,7 +2,7 @@
   <button class='btn btn-success' ng-click='showStory=!showStory'>Story Board</button>
   <div ng-show='showStory'>
   <h3>{{ title }}</h3>
-    <img ng-repeat='picture in storyBoard.panels' ng-src='{{picture.imgUrl}}'>
+    <panel ng-repeat='panel in storyBoard.panels' img='{{panel.imgUrl}}'>{{panel.caption}}</panel>
     <br>
     <button class='btn btn-info' ng-click='saveStory()'>Save Story</button>
   </div>
