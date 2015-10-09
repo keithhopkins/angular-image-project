@@ -69,4 +69,21 @@ angular.module('imageApp')
         });
     };
 
+
+
+  $scope.githubLogin = function() {
+    AuthFactory.githubLogin()
+    .then(function() {
+      $location.path('/');
+    })
+    .catch(function () {
+      $scope.error = true;
+      $scope.errorMessage = "Something went wrong.";
+    });
+  };
+
 }]);
+
+
+
+
