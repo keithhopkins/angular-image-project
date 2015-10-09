@@ -28,7 +28,7 @@ angular.module('imageApp')
 }]);
 
 
-angular.module('myApp')
+angular.module('imageApp')
 .controller('LogoutController', ['$scope', '$location', 'AuthFactory',
   function ($scope, $location, AuthFactory) {
 
@@ -43,20 +43,20 @@ angular.module('myApp')
 
 }]);
 
-angular.module('myApp')
-.controller('registerController', ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
+angular.module('imageApp')
+.controller('RegisterController', ['$scope', '$location', 'AuthFactory',
+  function ($scope, $location, AuthFactory) {
 
-    console.log(AuthService.getUserStatus());
+    console.log(AuthFactory.getUserStatus());
     $scope.register = function () {
       // initial values
       $scope.error = false;
       $scope.disabled = true;
       // call register from service
-      AuthService.register($scope.registerForm.username, $scope.registerForm.password)
+      AuthFactory.register($scope.registerForm.username, $scope.registerForm.password)
         // handle success
         .then(function () {
-          $location.path('/login');
+          $location.path('/');
           $scope.disabled = false;
           $scope.registerForm = {};
         })
