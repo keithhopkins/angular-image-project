@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
+
 
 var userSchema = new Schema({
-  user: String,
-  email: String,
+  username: String,
+  password: String,
   stories: Array
 });
 
@@ -16,8 +18,12 @@ var storyBoardSchema = new Schema({
   }]
 });
 
+userSchema.plugin(passportLocalMongoose);
+
 mongoose.model('users', userSchema);
 mongoose.model('stories', storyBoardSchema);
+
+
 
 mongoose.connect('mongodb://localhost/storyBoardApp');
 

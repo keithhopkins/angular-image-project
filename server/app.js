@@ -7,9 +7,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
+var session = require('express-session');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
+
+// user schema.model//
+var User = require('./models/database.js');
 
 
 // *** express instance *** //
@@ -31,7 +37,20 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUnintialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, '../client')));
+
+// ** configure passport **//
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 
 // *** main routes *** //
