@@ -3,9 +3,10 @@ var router = express.Router();
 var key = require('../../_config.js');
 var request = require('request');
 var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
-var StoryBoard = mongoose.model('stories');
+var StoryBoard = require('../models/storyboard.js');
 var passport = require('passport');
-var User = mongoose.model('users');
+var User = require('../models/user.js');
+
 
 
 router.post('/api/vision', function(req, res){
@@ -81,6 +82,22 @@ router.post('/register', function(req, res) {
   });
 });
 
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return res.status(500).json({err: err});
+    }
+    if (!user) {
+      return res.status(401).json({err: info});
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return res.status(500).json({err: 'Could not log in user'});
+      }
+      res.status(200).json({status: 'Login successful!'});
+    });
+  })(req, res, next);
+});
 
 
 

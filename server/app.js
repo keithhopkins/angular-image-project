@@ -1,21 +1,25 @@
 // *** main dependencies *** //
-require('./models/database');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var swig = require('swig');
+// var swig = require('swig');
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var session = require('express-session');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/storyBoardApp');
+
 
 // *** routes *** //
 var routes = require('./routes/index.js');
 
 // user schema.model//
-var User = require('./models/database.js');
+var User = require('./models/user.js');
+var Storyboard = require('./models/storyboard.js');
+
 
 
 // *** express instance *** //
@@ -23,13 +27,13 @@ var app = express();
 
 
 // *** view engine *** //
-var swig = new swig.Swig();
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
+// var swig = new swig.Swig();
+// app.engine('html', swig.renderFile);
+// app.set('view engine', 'html');
 
 
 // *** static directory *** //
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 
 
 // *** config middleware *** //
@@ -40,7 +44,7 @@ app.use(cookieParser());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUnintialized: true
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -74,22 +78,16 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    res.status(err.status || 500).json({status: "Error!"});
   });
 }
 
 // production error handler
 // no stacktraces leaked to user
+// production error handler
+// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+  res.status(err.status || 500).json({status: 'Error!'});
 });
 
 
