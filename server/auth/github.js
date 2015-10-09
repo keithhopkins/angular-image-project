@@ -7,9 +7,9 @@ var init = require('./init');
 
 
 passport.use(new GitHubStrategy({
-  clientID: config.github.clientID,
-  clientSecret: config.github.clientSecret,
-  callbackURL: config.github.callbackURL
+  clientID: config.clientId,
+  clientSecret: config.clientSecret,
+  callbackURL: config.callbackURL
   },
   function(accessToken, refreshToken, profile, done) {
 

@@ -10,7 +10,8 @@ angular.module('imageApp')
       getUserStatus: getUserStatus,
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      githubLogin: githubLogin
     });
 
     function getUserStatus() {
@@ -84,5 +85,32 @@ angular.module('imageApp')
       // return promise object
       return deferred.promise;
     }
+
+        function githubLogin() {
+      // create a new instance of deferred
+      var deferred = $q.defer();
+      // send a post request to the server
+      $http.post('/login', {username: username, password: password})
+        // handle success
+        .success(function (data, status) {
+          if(status === 200 && data.status){
+            user = true;
+            deferred.resolve();
+          } else {
+            user = false;
+            deferred.reject();
+          }
+        })
+        // handle error
+        .error(function (data) {
+          user = false;
+          deferred.reject();
+        });
+      // return promise object
+      return deferred.promise;
+    }
+
+
+
 
 }]);
