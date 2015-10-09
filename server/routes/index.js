@@ -100,6 +100,12 @@ router.post('/login', function(req, res, next) {
 });
 
 
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.status(200).json({status: 'Bye!'});
+});
+
+
 
 // http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageKeywords?url=http://www.online-image-editor.com//styles/2014/images/example_image.png&apikey=dfc8ffa9897e45e8753a1e3c63b1ef1791208403
 
