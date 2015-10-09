@@ -10,6 +10,11 @@
   </head>
   <body>
 
+    <!-- logout button -->
+    <div ng-controller="logoutController">
+      <a ng-click='logout()' class="btn btn-default">Logout</a>
+    </div>
+
     <div ng-view></div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -24,5 +29,8 @@
     <script type="text/javascript" src='home/homeController.js'></script>
     <script type="text/javascript" src='home/homeDirective.js'></script>
     <script type="text/javascript" src='home/homeFactory.js'></script>
+    <script type="text/javascript" src='auth/authControllers.js'></script>
+    <script type="text/javascript" src='auth/authFactory.js'></script>
+    <script type="text/javascript" src='auth/authDirectives.js'></script>
   </body>
 </html>
