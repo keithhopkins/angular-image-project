@@ -1,7 +1,7 @@
-# MEAN Facial Recognition using Alchemy API
+# Create your own story!
 ## Goal
 
-To make a convenient interface for using Alchemy Vision API
+To make an easy interface for creating a storyboard.
 
 ## Technology
 
