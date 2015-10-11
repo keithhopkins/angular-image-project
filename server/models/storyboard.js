@@ -7,7 +7,11 @@ var storyBoardSchema = new Schema({
   panels: [{
     imgUrl: String,
     caption: String
-  }]
+  }],
+  createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+    }
 });
 
 

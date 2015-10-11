@@ -51,14 +51,12 @@ router.get('/api/storyboard', function(req, res){
 
 // needs title and panels
 router.post('/api/storyboard', function(req, res){
-  console.log(req.body);
-  console.log(req.body.title);
+  console.log(req.session);
   var query = {title: req.body.title};
   var update = req.body;
   var options = {upsert: true, new: true};
   StoryBoard.findOneAndUpdateQ(query, update, options)
   .then(function(data) {
-    console.log('story successfully made/updated');
     res.json(data);
   }).catch(function(err) {
     console.log('story update failed');
