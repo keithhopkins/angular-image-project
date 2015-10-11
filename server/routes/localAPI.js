@@ -1,11 +1,11 @@
 var express = require('express');
-var router = express.router;
+var router = express.Router();
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
 var User = require('../models/user');
-var config = require('../../_config');
 var init = require('../auth/init');
+
+// var LocalStrategy = require('passport-local').Strategy;
+// var config = require('../../_config');
 
 // local auth
 router.post('/register', function(req, res) {
