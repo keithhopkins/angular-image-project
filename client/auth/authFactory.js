@@ -26,7 +26,7 @@ angular.module('imageApp')
       // create a new instance of deferred
       var deferred = $q.defer();
       // send a post request to the server
-      $http.post('/login', {username: username, password: password})
+      $http.post('/local/login', {username: username, password: password})
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){
@@ -50,7 +50,7 @@ angular.module('imageApp')
       // create a new instance of deferred
       var deferred = $q.defer();
       // send a get request to the server
-      $http.get('/logout')
+      $http.get('/local/logout')
         // handle success
         .success(function (data) {
           user = false;
@@ -69,7 +69,7 @@ angular.module('imageApp')
       // create a new instance of deferred
       var deferred = $q.defer();
       // send a post request to the server
-      $http.post('/register', {username: username, password: password})
+      $http.post('/local/register', {username: username, password: password})
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){
@@ -86,11 +86,11 @@ angular.module('imageApp')
       return deferred.promise;
     }
 
-        function githubLogin() {
+    function githubLogin() {
       // create a new instance of deferred
       var deferred = $q.defer();
       // send a post request to the server
-      $http.post('/login', {username: username, password: password})
+      $http.post('/local/login', {username: username, password: password})
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.status){

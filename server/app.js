@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost/storyBoardApp');
 // *** routes *** //
 var routes = require('./routes/index.js');
 var social = require('./routes/socialAPI.js');
+var local = require('./routes/localAPI.js');
 
 // user schema.model//
 var User = require('./models/user.js');
@@ -64,7 +65,7 @@ app.get('/', function(req, res, next) {
 });
 app.use('/', routes);
 app.use('/social', social);
-
+app.use('/local', local);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
