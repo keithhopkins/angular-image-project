@@ -33,9 +33,12 @@ angular.module('homeDirective')
 .directive('panel', function(){
   return {
     restrict: 'E',
+    scope:{
+      img: '@'
+    },
     transclude: true,
     link: function(scope, elem, attrs){
-      elem.css('display', 'inline');
+      elem.children().css('display', 'inline');
       elem.css('max-width', '250px');
       elem.css('max-height', '350px');
       elem.css('margin', '10px');
