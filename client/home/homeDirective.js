@@ -34,19 +34,20 @@ angular.module('homeDirective')
   return {
     restrict: 'E',
     scope:{
-      img: '@'
+      img: '@',
+      editable: '@'
     },
     transclude: true,
-    // link: function(scope, elem, attrs){
-    //   elem.children().css('display', 'inline');
-    //   elem.css('max-width', '250px');
-    //   elem.css('max-height', '350px');
-    //   elem.css('margin', '10px');
-    //   console.log(elem);
-    // },
+    link: function(scope, elem, attrs){
+      console.log("woo!",scope.editable);
+      if(scope.editable){
+        $('.container').append("<button class='btn btn-danger'>Delete</button>");
+      }
+      console.log('hi',$('.container'));
+    },
     templateUrl: 'home/partials/panel.html'
-  }
-})
+  };
+});
 // img {
 //   max-height: 250px;
 //   max-width: 250px;

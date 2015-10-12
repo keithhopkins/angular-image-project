@@ -81,7 +81,8 @@ angular.module('imageApp')
 
     $scope.showValues = function() {
       console.log($scope.storyBoard);
-    }
+    };
+
 
 
 
