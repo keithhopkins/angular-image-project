@@ -20,6 +20,11 @@ angular.module('imageApp', ['ngRoute', 'homeDirective'])
         controller: 'RegisterController',
         access: {restricted: false}
       })
+      .when('/stories', {
+        templateUrl: 'see-stories/partials/stories.html',
+        controller: 'StoriesController',
+        access: {restricted: false}
+      })
       .otherwise({redirectTo: '/'});
   });
 

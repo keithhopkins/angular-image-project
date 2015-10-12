@@ -1,0 +1,10 @@
+<div>
+  <select ng-model='storyBoard' ng-options='story as story.title for story in storyBoards'>
+      <pre>{{ story }}</pre>
+    </select>
+</div>
+
+<div>
+  <h3>{{ storyBoard.title }}</h3>
+      <panel ng-repeat='panel in storyBoard.panels' img='{{panel.imgUrl}}'>{{panel.caption}}</panel>
+</div>
