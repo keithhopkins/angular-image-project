@@ -5,7 +5,11 @@ var passportLocalMongoose = require('passport-local-mongoose');
 
 var userSchema = new Schema({
   username: String,
-  password: String
+  password: String,
+  storiesBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'stories'
+    }
 });
 
 

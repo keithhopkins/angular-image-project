@@ -37,13 +37,13 @@ angular.module('homeDirective')
       img: '@'
     },
     transclude: true,
-    link: function(scope, elem, attrs){
-      elem.children().css('display', 'inline');
-      elem.css('max-width', '250px');
-      elem.css('max-height', '350px');
-      elem.css('margin', '10px');
-      console.log(elem);
-    },
+    // link: function(scope, elem, attrs){
+    //   elem.children().css('display', 'inline');
+    //   elem.css('max-width', '250px');
+    //   elem.css('max-height', '350px');
+    //   elem.css('margin', '10px');
+    //   console.log(elem);
+    // },
     templateUrl: 'home/partials/panel.html'
   }
 })
