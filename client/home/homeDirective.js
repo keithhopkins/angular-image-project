@@ -42,9 +42,9 @@ angular.module('homeDirective')
       elem.css('max-width', '250px');
       elem.css('max-height', '350px');
       elem.css('margin', '10px');
-      console.log('should be img', elem.children()[0]);
-      elem.children()[1].css('max-width', '250px');
-      elem.children()[1].css('max-height', '250px');
+      // console.log('div with img inside', elem.children().children()[0]);
+      // elem.children().children()[0].css();
+      // elem.children().children()[0].css('max-height', '250px');
     },
     templateUrl: 'home/partials/panel.html'
   }

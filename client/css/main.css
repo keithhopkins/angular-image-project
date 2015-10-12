@@ -7,6 +7,12 @@ a {
   color: #00B7FF;
 }
 
+img {
+  max-height: 200px;
+  max-width: 200px;
+  margin: 10px;
+}
+
 .border {
   border: 20px, blue;
 }
