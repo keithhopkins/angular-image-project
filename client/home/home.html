@@ -18,6 +18,8 @@
     <input class='form-control' id='title' type='text' ng-model='storyBoard.title' placeholder="Name your story"></input>
     <h4><label for='image-url'>Start by entering Image URL: </label></h4>
     <input class='form-control' id='image-url' type='text' ng-model='imgUrl' placeholder="Enter image URL"></input>
+    <h4><label for='caption'>Picture caption: </label></h4>
+    <input class='form-control' id='caption' type='text' ng-model='caption' placeholder='Once upon a time...'></input>
     <br>
     <button ng-click='getKeywordsAndInstagram()' class='btn btn-primary'>Get Similar Photos</button>
     <button ng-click='addStoryBoard(imgUrl)' class='btn btn-danger'>Add to Story Board</button>

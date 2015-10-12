@@ -47,7 +47,7 @@ angular.module('imageApp')
 
     $scope.addStoryBoard = function() {
       var obj = {imgUrl: $scope.imgUrl,
-                 caption:'test'};
+                 caption: $scope.caption};
       console.log(obj);
       $scope.storyBoard.panels.push(obj);
     };

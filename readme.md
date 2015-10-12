@@ -7,13 +7,8 @@ To make an easy interface for creating a storyboard.
 
 * Alchemy Vision API
 * MEAN Stack
-* Gulp
 * Authentication
 * Bootstrap
-
-## Implementation
-
-* Programming Style TDD
 
 ## Possible Difficulties
 

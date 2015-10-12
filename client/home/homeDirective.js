@@ -33,18 +33,13 @@ angular.module('homeDirective')
 .directive('panel', function(){
   return {
     restrict: 'E',
-    scope:{
-      img: '@'
-    },
     transclude: true,
     link: function(scope, elem, attrs){
       elem.css('display', 'inline');
       elem.css('max-width', '250px');
       elem.css('max-height', '350px');
       elem.css('margin', '10px');
-      // console.log('div with img inside', elem.children().children()[0]);
-      // elem.children().children()[0].css();
-      // elem.children().children()[0].css('max-height', '250px');
+      console.log(elem);
     },
     templateUrl: 'home/partials/panel.html'
   }
