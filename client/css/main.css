@@ -10,3 +10,7 @@ a {
 .border {
   border: 20px, blue;
 }
+
+.logout {
+  float: right;
+}
