@@ -14,3 +14,25 @@ a {
 .logout {
   float: right;
 }
+
+.center {
+  text-align: center
+}
+
+.img-main {
+  background-image: url(http://i.imgur.com/sh8Eu.png);
+  background-size: 895px, 800px;
+  background-repeat: no-repeat;
+}
+
+.img-login {
+  background-image: url(http://2.bp.blogspot.com/-hOilA8v6QrU/TgBbyqyhJiI/AAAAAAAAAJM/Yx_LZfTDsK0/s1600/boy%2Brunning%2Btooo%2Bplant%2Bcome.jpg);
+  background-size: 1000px, 1000px;
+  background-repeat: no-repeat;
+}
+
+.img-register {
+  background-image: url(http://cdn-blog-assets.bigfishsites.com/Interviews/Alawar/AlawarGamesSketch4.jpg);
+  background-size: 895px, 800px;
+  background-repeat: no-repeat;
+}

@@ -4,7 +4,8 @@
     </div>
 
 
-<div class='col-md-8 col-md-offset-2'>
+<div class='col-md-8 col-md-offset-2 img-main'>
+  <h1 class='center'>Welcome to Create your own Storyboard</h1>
   <h2>Create your own story board adventure</h2>
   <h3>Start your adventure</h3>
   <form>
@@ -13,9 +14,9 @@
       <pre>{{ story }}</pre>
     </select>
     <br>
-    <label for='title'>Name your storyboard:</label>
+    <h4><label for='title'>Name your storyboard:</label></h4>
     <input class='form-control' id='title' type='text' ng-model='storyBoard.title' placeholder="Name your story"></input>
-    <label for='image-url'>Start by entering Image URL: </label>
+    <h4><label for='image-url'>Start by entering Image URL: </label></h4>
     <input class='form-control' id='image-url' type='text' ng-model='imgUrl' placeholder="Enter image URL"></input>
     <br>
     <button ng-click='getKeywordsAndInstagram()' class='btn btn-primary'>Get Similar Photos</button>
