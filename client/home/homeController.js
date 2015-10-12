@@ -1,5 +1,5 @@
 angular.module('imageApp')
-  .controller('HomeController', function($scope, httpFactory, $timeout){
+  .controller('HomeController', function($scope, httpFactory, homeFactory, $timeout){
     $scope.storyBoard = {panels:[]};
     $scope.errorMessage = '';
 
@@ -78,6 +78,10 @@ angular.module('imageApp')
 
     $scope.showValues = function() {
       console.log($scope.storyBoard);
+    };
+
+    $scope.deletePicture = function() {
+      console.log('Im working');
     };
 
 
