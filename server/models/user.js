@@ -6,10 +6,10 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var userSchema = new Schema({
   username: String,
   password: String,
-  storiesBy: {
+  stories: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'stories'
-    }
+    }]
 });
 
 

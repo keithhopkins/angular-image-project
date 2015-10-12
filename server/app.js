@@ -17,6 +17,7 @@ mongoose.connect('mongodb://localhost/storyBoardApp');
 var routes = require('./routes/index.js');
 var social = require('./routes/socialAPI.js');
 var local = require('./routes/localAPI.js');
+var users = require('./routes/users.js');
 
 // user schema.model//
 var User = require('./models/user.js');
@@ -64,6 +65,7 @@ app.get('/', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../client/', 'index.html'));
 });
 app.use('/', routes);
+app.use('/users', users);
 app.use('/social', social);
 app.use('/local', local);
 
