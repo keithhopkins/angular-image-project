@@ -1,7 +1,7 @@
 angular.module('imageApp')
-  .controller('StoriesController', function($scope, homeFactory) {
+  .controller('StoriesController', function($scope, httpFactory) {
 
-    homeFactory.getStoryBoards()
+    httpFactory.getStoryBoards()
     .then(function(response){
       $scope.storyBoards = response.data;
       console.log($scope.storyBoards);

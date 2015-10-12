@@ -1,5 +1,5 @@
 angular.module('imageApp')
-  .controller('HomeController', function($scope, homeFactory, $timeout){
+  .controller('HomeController', function($scope, httpFactory, $timeout){
     $scope.storyBoard = {panels:[]};
     $scope.errorMessage = '';
 
@@ -7,7 +7,7 @@ angular.module('imageApp')
       $scope.errorMessage = '';
     }
 
-    homeFactory.getStoryBoards()
+    httpFactory.getStoryBoards()
     .then(function(response){
       $scope.storyBoards = response.data;
       console.log($scope.storyBoards);
@@ -19,7 +19,7 @@ angular.module('imageApp')
 
     $scope.getKeywordsAndInstagram = function(){
       // $scope.storyBoard.push($scope.imgUrl);
-      homeFactory.getKeywords($scope.imgUrl)
+      httpFactory.getKeywords($scope.imgUrl)
         .then(function(response){
           var keyword;
           var keywords = JSON.parse(response.data.body).imageKeywords;
@@ -46,15 +46,12 @@ angular.module('imageApp')
     };
 
     $scope.addStoryBoard = function() {
-      var obj = {imgUrl: $scope.imgUrl,
-                 caption: $scope.caption};
-      console.log(obj);
-      $scope.storyBoard.panels.push(obj);
+      homeFactory.addStoryBoard($scope.storyBoard, $scope.imgUrl, $scope.caption);
     };
 
     $scope.saveStory = function(){
       $scope.storyBoards.push($scope.storyBoard);
-      homeFactory.saveStoryBoard($scope.storyBoard)
+      httpFactory.saveStoryBoard($scope.storyBoard)
       .then(function(response) {
         console.log('success save', response);
       }, function(response) {
@@ -64,7 +61,7 @@ angular.module('imageApp')
 
     function getInstagram(keyword){
       console.log('get instagram', keyword);
-      homeFactory.getInstagram(keyword)
+      httpFactory.getInstagram(keyword)
         .then(function(response){
           console.log(response);
           $scope.pictures = JSON.parse(response.data.body).data;

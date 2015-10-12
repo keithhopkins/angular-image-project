@@ -38,3 +38,5 @@ router.post('/:userid/stories', function(req, res, next){
   .done();
 
 });
+
+module.exports = router;

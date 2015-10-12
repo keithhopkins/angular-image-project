@@ -1,42 +1,11 @@
 angular.module('imageApp')
-.factory('homeFactory', ['$http', function($http){
+.factory('homeFactory', [function(){
   var factory = {};
 
-  factory.getKeywords = function(imgUrl){
-    return $http({
-      method: 'POST',
-      url: '/api/vision',
-      data: {
-        imgUrl: imgUrl
-      }
-    });
-  };
-
-
-  factory.getInstagram = function(keyword){
-    return $http({
-      method: 'POST',
-      url: '/api/instagram',
-      data: {
-        keyword: keyword
-      }
-    });
-  };
-
-  factory.saveStoryBoard = function(storyBoard) {
-    return $http({
-      method: 'POST',
-      url: '/api/storyboard',
-      data: storyBoard
-    });
-  };
-
-  factory.getStoryBoards = function(){
-    return $http({
-      method: 'GET',
-      url: '/api/storyboard'
-    });
-  };
+  factory.addStoryBoard = function(storyBoard, img, caption){
+    storyBoard.panels.push({imgUrl: img,
+                            caption: caption});
+  }
 
   return factory;
 }]);
