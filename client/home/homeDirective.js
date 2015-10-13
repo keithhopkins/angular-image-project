@@ -35,8 +35,9 @@ angular.module('homeDirective')
     restrict: 'E',
     scope:{
       img: '@',
-      editable: '@'
+      index: '@'
     },
+    transclude: true,
     // something about this doesn't work.... but it shows up... but it doesn't know the controller to use
     // link: function(scope, elem, attrs){
     //   if(scope.editable){
@@ -46,4 +47,3 @@ angular.module('homeDirective')
     templateUrl: 'home/partials/panel.html'
   };
 });
-

@@ -43,6 +43,7 @@ router.post('/api/instagram', function(req, res) {
 router.get('/api/storyboard', function(req, res){
   StoryBoard.findQ()
   .then(function(data){
+    console.log('GETTING ALL STORIES');
     res.json(data);
   }).catch(function(err){
     res.json({'message': err});

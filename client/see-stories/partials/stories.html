@@ -6,5 +6,7 @@
 
 <div>
   <h3>{{ storyBoard.title }}</h3>
-      <panel ng-repeat='panel in storyBoard.panels' img='{{panel.imgUrl}}'>{{panel.caption}}</panel>
+  <div ng-repeat='panel in storyBoard.panels'>
+    <panel img='{{panel.imgUrl}}'>{{panel.caption}}</panel>
+  </div>
 </div>

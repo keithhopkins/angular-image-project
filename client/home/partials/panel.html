@@ -1,5 +1,7 @@
 <!-- why did we need to reference this again at the root level?.. but it works -->
-<div ng-controller="HomeController">
+<div>
     <img ng-src='{{img}}'></img>
-  <button ng-click='deletePanel($index)' class='btn btn-danger'>Delete</button>
+  <p>
+    <ng-transclude></ng-transclude>
+  </p>
 </div>

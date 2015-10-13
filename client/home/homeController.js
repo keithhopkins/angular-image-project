@@ -51,7 +51,8 @@ angular.module('imageApp')
     };
 
     $scope.deletePanel = function(index){
-      $scope.storyBoard.splice(index,1);
+      console.log('index', index);
+      $scope.storyBoard.panels.splice(index,1);
     }
 
     $scope.deleteStoryBoard = function(){
@@ -108,13 +109,5 @@ angular.module('imageApp')
     $scope.showValues = function() {
       console.log($scope.storyBoard);
     };
-
-    $scope.deletePanel = function($index) {
-      console.log('Im working');
-    };
-
-
-
-
 
   }); //end

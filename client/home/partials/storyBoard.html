@@ -3,7 +3,8 @@
   <div ng-show='showStory'>
   <h3>{{ storyBoard.title }}</h3>
   <div ng-repeat='panel in storyBoard.panels'>
-    <panel editable='true' img='{{panel.imgUrl}}'>{{panel.caption}}</panel>
+    <panel img='{{panel.imgUrl}}'>{{panel.caption}}</panel>
+    <button ng-click='deletePanel($index)' class='btn btn-danger'>Delete</button>
   </div>
     <br>
     <button class='btn btn-info' ng-click='saveStory()'>Save Story</button>
