@@ -60,5 +60,12 @@ angular.module('imageApp')
     })
   }
 
+  factory.deletePicture = function() {
+    return $http({
+      method: 'DELETE',
+      url: '/api/panels'
+    });
+  };
+
   return factory;
 }]);

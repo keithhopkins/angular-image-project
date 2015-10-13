@@ -37,19 +37,13 @@ angular.module('homeDirective')
       img: '@',
       editable: '@'
     },
-    transclude: true,
-    link: function(scope, elem, attrs){
-      console.log("woo!",scope.editable);
-      if(scope.editable){
-        $('.container').append("<button class='btn btn-danger'>Delete</button>");
-      }
-      console.log('hi',$('.container'));
-    },
+    // something about this doesn't work.... but it shows up... but it doesn't know the controller to use
+    // link: function(scope, elem, attrs){
+    //   if(scope.editable){
+    //     elem.append("<button ng-click='deletePicture()' class='btn btn-danger'>Delete</button>");
+    //   }
+    // },
     templateUrl: 'home/partials/panel.html'
   };
 });
-// img {
-//   max-height: 250px;
-//   max-width: 250px;
-//   margin: 10px;
-// }
+

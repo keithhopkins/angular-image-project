@@ -1,35 +1,39 @@
     <!-- logout button -->
+<div class='row'>
     <div ng-controller="LogoutController">
       <a ng-click='logout()' class="btn btn-default btn-info logout">Logout</a>
     </div>
 
+  <div class='col-md-8 col-md-offset-2 img-main'>
+    <h1 class='center'>Welcome to Create your own Storyboard</h1>
+    <h2>Create your own story board adventure</h2>
+    <h3>Start your adventure</h3>
+    <form>
 
-<div class='col-md-8 col-md-offset-2 img-main'>
-  <h1 class='center'>Welcome to Create your own Storyboard</h1>
-  <h2>Create your own story board adventure</h2>
-  <h3>Start your adventure</h3>
-  <form>
-
-    <select ng-model='storyBoard' ng-options='story as story.title for story in storyBoards'>
-      <pre>{{ story }}</pre>
-    </select>
-    <br>
-    <h4><label for='title'>Name your storyboard:</label></h4>
-    <input class='form-control' id='title' type='text' ng-model='storyBoard.title' placeholder="Name your story"></input>
-    <h4><label for='image-url'>Start by entering Image URL: </label></h4>
-    <input class='form-control' id='image-url' type='text' ng-model='imgUrl' placeholder="Enter image URL"></input>
-    <h4><label for='caption'>Picture caption: </label></h4>
-    <input class='form-control' id='caption' type='text' ng-model='caption' placeholder='Once upon a time...'></input>
-    <br>
-    <button ng-click='getKeywordsAndInstagram()' class='btn btn-primary'>Get Similar Photos</button>
-    <button ng-click='addStoryBoard(imgUrl)' class='btn btn-danger'>Add to Story Board</button>
-<!--     <button ng-click='showValues()'>Show</button> -->
-  </form>
-  <p>{{errorMessage}}</p>
-  <div>
-    <img src='{{imgUrl}}'>
+      <select ng-model='storyBoard' ng-options='story as story.title for story in storyBoards'>
+        <pre>{{ story }}</pre>
+      </select>
+      <br>
+      <h4><label for='title'>Name your storyboard:</label></h4>
+      <input class='form-control' id='title' type='text' ng-model='storyBoard.title' placeholder="Name your story"></input>
+      <h4><label for='image-url'>Start by entering Image URL: </label></h4>
+      <input class='form-control' id='image-url' type='text' ng-model='imgUrl' placeholder="Enter image URL"></input>
+      <h4><label for='caption'>Picture caption: </label></h4>
+      <input class='form-control' id='caption' type='text' ng-model='caption' placeholder='Once upon a time...'></input>
+      <br>
+      <button ng-click='getKeywordsAndInstagram()' class='btn btn-primary'>Get Similar Photos</button>
+      <button ng-click='addStoryBoard(imgUrl)' class='btn btn-danger'>Add to Story Board</button>
+  <!--     <button ng-click='showValues()'>Show</button> -->
+    </form>
+    <p>{{errorMessage}}</p>
+    <div>
+      <img src='{{imgUrl}}'>
+    </div>
   </div>
-  <story-board></story-board>
+</div>
 
-  <results></results>
+<div class='row'>
+  <story-board class='col-md-2 col-md-offset-2'></story-board>
+
+  <results class='col-md-6'></results>
 </div>

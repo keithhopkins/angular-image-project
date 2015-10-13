@@ -2,7 +2,7 @@
   <button class='btn btn-success' ng-click='showStory=!showStory'>Story Board</button>
   <div ng-show='showStory'>
   <h3>{{ storyBoard.title }}</h3>
-  <div style='display:inline;' ng-repeat='panel in storyBoard.panels'>
+  <div ng-repeat='panel in storyBoard.panels'>
     <panel editable='true' img='{{panel.imgUrl}}'>{{panel.caption}}</panel>
   </div>
     <br>

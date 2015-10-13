@@ -109,6 +109,10 @@ angular.module('imageApp')
       console.log($scope.storyBoard);
     };
 
+    $scope.deletePanel = function($index) {
+      console.log('Im working');
+    };
+
 
 
 
