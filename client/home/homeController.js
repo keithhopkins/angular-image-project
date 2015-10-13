@@ -80,7 +80,7 @@ angular.module('imageApp')
       console.log($scope.storyBoard);
     };
 
-    $scope.deletePicture = function() {
+    $scope.deletePanel = function($index) {
       console.log('Im working');
     };
 
