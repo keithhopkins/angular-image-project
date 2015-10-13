@@ -55,7 +55,7 @@ angular.module('imageApp')
   factory.deleteStoryBoard = function(storyBoard){
     return $http({
       method: 'DELETE',
-      url: '/users/story',
+      url: '/api/story',
       data: storyBoard
     })
   }
