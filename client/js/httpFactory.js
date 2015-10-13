@@ -12,7 +12,6 @@ angular.module('imageApp')
     });
   };
 
-
   factory.getInstagram = function(keyword){
     return $http({
       method: 'POST',
@@ -23,20 +22,43 @@ angular.module('imageApp')
     });
   };
 
-  factory.saveStoryBoard = function(storyBoard) {
-    return $http({
-      method: 'POST',
-      url: '/api/storyboard',
-      data: storyBoard
-    });
-  };
-
   factory.getStoryBoards = function(){
     return $http({
       method: 'GET',
       url: '/api/storyboard'
     });
   };
+
+  factory.saveStoryBoard = function(storyBoard) {
+    return $http({
+      method: 'POST',
+      url: '/users/stories',
+      data: storyBoard
+    });
+  };
+
+  factory.getUserStories = function(){
+    return $http({
+      method: 'GET',
+      url: '/users/stories'
+    })
+  }
+
+  factory.updateStoryBoard = function(storyBoard){
+    return $http({
+      method: 'PUT',
+      url: '/users/stories',
+      data: storyBoard
+    })
+  }
+
+  factory.deleteStoryBoard = function(storyBoard){
+    return $http({
+      method: 'DELETE',
+      url: '/users/story',
+      data: storyBoard
+    })
+  }
 
   return factory;
 }]);

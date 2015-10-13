@@ -1,5 +1,5 @@
 angular.module('imageApp')
-  .controller('HomeController', function($scope, httpFactory, $timeout){
+  .controller('HomeController', function($scope, httpFactory, homeFactory, $timeout){
     $scope.storyBoard = {panels:[]};
     $scope.errorMessage = '';
 
@@ -7,7 +7,7 @@ angular.module('imageApp')
       $scope.errorMessage = '';
     }
 
-    httpFactory.getStoryBoards()
+    httpFactory.getUserStories()
     .then(function(response){
       $scope.storyBoards = response.data;
       console.log($scope.storyBoards);
@@ -45,19 +45,48 @@ angular.module('imageApp')
         });
     };
 
+    // needs to be renamed to addPanel
     $scope.addStoryBoard = function() {
       homeFactory.addStoryBoard($scope.storyBoard, $scope.imgUrl, $scope.caption);
     };
 
+    $scope.deletePanel = function(index){
+      $scope.storyBoard.splice(index,1);
+    }
+
+    $scope.deleteStoryBoard = function(){
+      httpFactory.deleteStoryBoard($scope.storyBoard)
+      .then(function(response){
+        console.log('deleted');
+      }, function(response){
+        console.log('FAILED TO DELETE');
+      })
+    }
+
     $scope.saveStory = function(){
-      $scope.storyBoards.push($scope.storyBoard);
-      httpFactory.saveStoryBoard($scope.storyBoard)
-      .then(function(response) {
-        console.log('success save', response);
-      }, function(response) {
-        console.log('FAIL', response);
-      });
+      if($scope.storyBoards.indexOf($scope.storyBoard)===-1){
+        console.log('calling POST route');
+        httpFactory.saveStoryBoard($scope.storyBoard)
+        .then(function(response) {
+          console.log('success save', response);
+          $scope.storyBoards.push($scope.storyBoard);
+        }, function(response) {
+          console.log('FAIL', response);
+        });
+      } else {
+        console.log('calling PUT route')
+        updateStory();
+      }
     };
+
+    function updateStory(){
+      httpFactory.updateStoryBoard($scope.storyBoard)
+      .then(function(response){
+        console.log('success update', response);
+      }, function(response){
+        console.log('FAIL UPDATE', response);
+      });
+    }
 
     function getInstagram(keyword){
       console.log('get instagram', keyword);

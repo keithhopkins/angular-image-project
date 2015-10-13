@@ -49,23 +49,16 @@ router.get('/api/storyboard', function(req, res){
   });
 });
 
-// needs title and panels
-router.post('/api/storyboard', function(req, res){
-  console.log(req.session);
-  var query = {title: req.body.title};
-  var update = req.body;
-  var options = {upsert: true, new: true};
-  StoryBoard.findOneAndUpdateQ(query, update, options)
-  .then(function(data) {
-    res.json(data);
-  }).catch(function(err) {
-    console.log('story update failed');
-    console.log(err);
-    res.json({'message': err});
-  });
+router.delete('/api/storyboard', function(req,res){
+  StoryBoard.findOneAndRemoveQ(req.body)
+  .then(function(result){
+    res.json(result);
+  })
+  .catch(function(err){
+    res.send({'ERROR' : err});
+  })
+  .done();
 });
-
-
 
 // http://gateway-a.watsonplatform.net/calls/url/URLGetRankedImageKeywords?url=http://www.online-image-editor.com//styles/2014/images/example_image.png&apikey=dfc8ffa9897e45e8753a1e3c63b1ef1791208403
 
